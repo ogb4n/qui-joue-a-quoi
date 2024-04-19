@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Steam - Qui joue à quoi ?</title>
+    <link rel="stylesheet" href="../static/css/output.css" />
+  </head>
+  <body class="bg-[#0e1014]">
+    <header>
+      <nav class="bg-[#171d25] font-bold h-[7rem] p-2">
+        <ul class="justify-between grid grid-cols-3">
+          <li>
+            <img
+              src="/static/logo_steam.svg"
+              alt="steamlogo"
+              class="w-[15rem]"
+            />
+            <a href="/" class="text-[#c5c3c0]"
+              >Top 10 des jeux les plus joués</a
+            >
+          </li>
+          <!-- <li>
+            <a href="/about" class="text-white">About</a>
+          </li> -->
+        </ul>
+      </nav>
+    </header>
+    <div
+      class="font-thin w-full text-lg text-center py-10 bg-gradient-to-b from-[#1b1d22] to-[#0e1014]"
+    >
+      <p class="text-white">
+        Nombre de joueurs connectés à steam :
+        <span class="font-bold text-green-700 font-mono">
+          {{ online_players }}
+        </span>
+      </p>
+      <p class="text-white">
+        Nombre de joueurs qui jouent à un jeu :
+        <span class="font-bold text-green-700 font-mono">
+          {{ playercount }}
+        </span>
+      </p>
+    </div>
+    <div>
+      <div class="w-fit mx-auto pt-6">
+        <h2 class="font-thin text-lg text-white">Liste des jeux</h2>
+        <ul>
+          <div class="grid grid-cols-2 mx-auto w-fit text-white">
+            <img
+              src="/static/arrow.gif"
+              alt=""
+              class="absolute left-[14rem] top-[47rem] w-[27rem]"
+            />
+            {% for game in games %}
+            <a href="https://store.steampowered.com/app/{{game.steam_app_id}}">
+              <li
+                class="bg-gradient-to-b from-[#1b1d22] to-[#0e1014] mt-4 mx-6 w-[20rem] hover:shadow-lg hover:shadow-green-700"
+              >
+                <div class="grid grid-cols-2 mb-2">
+                  <div class="">
+                    <img
+                      class="rounded-xl ml-8 mt-2 w-12"
+                      src="{{ game.icon_image_url }}"
+                      alt="Icone du jeu"
+                    />
+                  </div>
+                  <p class="font-bold text-center">{{ game.name }}</p>
+                </div>
+                <p class="font-mono">
+                  Joueurs actuels
+                  <span class="text-green-700 font-bold ml-[5rem]"
+                    >{{ game.current_players }}</span
+                  >
+                </p>
+              </li>
+            </a>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="w-full grid grid-cols-2 pt-[15rem]">
+      <div class="w-full mt-2">
+        <p class="text-[#c5c3c0] font-bold text-center">
+          Répartition des joueurs sur les 10 jeux les plus joués
+        </p>
+        <img
+          src="../static/bar_chart.png"
+          alt="graph_players"
+          class="w-[50rem] mx-auto"
+        />
+      </div>
+      <div class="w-full mt-2">
+        <p class="text-[#c5c3c0] font-bold text-center">
+          Joueurs du top 10 jeux / joueurs totaux steam
+        </p>
+        <img
+          src="../static/pie_chart.png"
+          alt="graph_players"
+          class="w-[50rem] mx-auto"
+        />
+      </div>
+    </div>
+    <footer>
+      <div class="bg-[#171d25] text-white text-center p-2">
+        <p>© 2024 - Steam - Qui joue à quoi ?</p>
+        <p>Ynov Campus - Bordeaux - Doniban Lopez</p>
+        <p>Informatique B2 Data</p>
+      </div>
+    </footer>
+  </body>
+</html>
