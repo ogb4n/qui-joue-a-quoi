@@ -42,7 +42,7 @@ Soyez sûr d'avoir python installé sur votre machine
 
    vous pouvez aussi créer un environnement virtuel et installer les packages dedans pour garder votre machine propre
 
-3. Run the main.py file and go to http://localhost:5000/ to see the web interface
+3. Lancer le serveur avec la commande suivante et ouvrir le site sur votre navigateur à l'adresse http://localhost:5000/
 
    ```sh
    python main.py
